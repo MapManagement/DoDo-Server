@@ -34,6 +34,7 @@ def create_table_notes():
     sql_statement = "CREATE TABLE notes (" \
                     "id MEDIUMINT(9) NOT NULL AUTO_INCREMENT," \
                     "creator_id MEDIUMINT(9) NOT NULL" \
+                    "title VARCHAR(32)," \
                     "content VARCHAR(2048) NOT NULL," \
                     "is_visible BOOLEAN NOT NULL," \
                     "is_highlighted BOOLEAN NOT NULL," \
