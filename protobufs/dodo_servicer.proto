@@ -1,0 +1,53 @@
+syntax="proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package grpc;
+
+
+service ToDos {
+    rpc InsertToDo(ToDo) returns (SuccessResponse);
+    rpc UpdateToDo(ToDo) returns (SuccessResponse);
+    rpc DeleteToDo(ToDoIdentifier) returns (SuccessResponse);
+}
+
+service Notes {
+    rpc InsertNote(Note) returns (SuccessResponse);
+    rpc UpdateNote(Note) returns (SuccessResponse);
+    rpc DeleteNote(NoteIdentifier) returns (SuccessResponse);
+}
+
+message SuccessResponse {
+    bool success= 1;
+}
+
+message ToDo {
+  uint32 id = 1;
+  uint32 creatorID = 2;
+  string text = 3;
+  bool isDone = 4;
+  google.protobuf.Timestamp creationDate = 5;
+  string color = 6;
+}
+
+message ToDoIdentifier {
+    uint32 id = 1;
+    uint32 creatorID = 2;
+}
+
+message Note {
+    uint32 id = 1;
+    uint32 creatorID = 2;
+    string title = 3;
+    string content = 4;
+    bool isVisible = 5;
+    bool isHighlighted = 6;
+    string color = 7;
+}
+
+message NoteIdentifier {
+    uint32 id = 1;
+    uint32 creatorID = 2;
+}
+
+message Empty { }
