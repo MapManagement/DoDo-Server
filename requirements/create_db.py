@@ -21,7 +21,6 @@ def create_table_todos():
                     "creator_id MEDIUMINT(9) NOT NULL," \
                     "text VARCHAR(64) NOT NULL," \
                     "is_done BOOLEAN NOT NULL," \
-                    "creation_date DATETIME NOT NULL," \
                     "color VARCHAR(10) DEFAULT '#8e47d1'," \
                     "PRIMARY KEY (id)," \
                     "FOREIGN KEY (creator_id) REFERENCES profiles(id)" \
@@ -36,6 +35,7 @@ def create_table_notes():
                     "creator_id MEDIUMINT(9) NOT NULL" \
                     "title VARCHAR(32)," \
                     "content VARCHAR(2048) NOT NULL," \
+                    "creation_date DATETIME NOT NULL," \
                     "is_visible BOOLEAN NOT NULL," \
                     "is_highlighted BOOLEAN NOT NULL," \
                     "color VARCHAR(10) NOT NULL," \
