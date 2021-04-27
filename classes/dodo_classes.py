@@ -2,12 +2,11 @@
 
 class ToDoTask:
 
-    def __init__(self, t_id, creator_id, text, color, creation_date, is_done):
+    def __init__(self, t_id, creator_id, text, color, is_done):
         self.t_id = t_id
         self.creator_id = creator_id
         self.text = text
         self.color = color
-        self.creation_date = creation_date
         self.is_done = is_done
 
 

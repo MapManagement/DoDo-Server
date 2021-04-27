@@ -26,7 +26,6 @@ message ToDo {
   uint32 creatorID = 2;
   string text = 3;
   bool isDone = 4;
-  google.protobuf.Timestamp creationDate = 5;
   string color = 6;
 }
 
@@ -43,11 +42,18 @@ message Note {
     bool isVisible = 5;
     bool isHighlighted = 6;
     string color = 7;
+    google.protobuf.Timestamp creationDate = 8;
 }
 
 message NoteIdentifier {
     uint32 id = 1;
     uint32 creatorID = 2;
+}
+
+message Profile {
+  uint32 id = 1;
+  string name = 2;
+  google.protobuf.Timestamp creationDate = 3;
 }
 
 message Empty { }
