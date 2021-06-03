@@ -1,4 +1,4 @@
-from classes.dodo_classes import ToDo, Note, Tag, NoteTagRel
+from classes.dodo_classes import ToDo, Note, Profile, Tag, NoteTagRel
 from google.protobuf.timestamp_pb2 import Timestamp
 
 import grpc
