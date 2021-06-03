@@ -5,13 +5,11 @@ import "google/protobuf/timestamp.proto";
 package grpc;
 
 
-service ToDos {
+service DoDo {
     rpc InsertToDo(ToDo) returns (SuccessResponse);
     rpc UpdateToDo(ToDo) returns (SuccessResponse);
     rpc DeleteToDo(ToDoIdentifier) returns (SuccessResponse);
-}
 
-service Notes {
     rpc InsertNote(Note) returns (SuccessResponse);
     rpc UpdateNote(Note) returns (SuccessResponse);
     rpc DeleteNote(NoteIdentifier) returns (SuccessResponse);
@@ -22,7 +20,7 @@ message SuccessResponse {
 }
 
 message ToDo {
-  uint32 id = 1;
+  uint32 tid = 1;
   uint32 creatorID = 2;
   string text = 3;
   bool isDone = 4;
@@ -30,12 +28,12 @@ message ToDo {
 }
 
 message ToDoIdentifier {
-    uint32 id = 1;
+    uint32 tid = 1;
     uint32 creatorID = 2;
 }
 
 message Note {
-    uint32 id = 1;
+    uint32 nid = 1;
     uint32 creatorID = 2;
     string title = 3;
     string content = 4;
@@ -46,14 +44,19 @@ message Note {
 }
 
 message NoteIdentifier {
-    uint32 id = 1;
+    uint32 nid = 1;
     uint32 creatorID = 2;
 }
 
 message Profile {
-  uint32 id = 1;
+  uint32 pid = 1;
   string name = 2;
   google.protobuf.Timestamp creationDate = 3;
+}
+
+message Tag {
+  uint32 taid = 1;
+  string name = 2;
 }
 
 message Empty { }

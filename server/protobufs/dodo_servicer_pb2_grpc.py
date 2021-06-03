@@ -5,7 +5,7 @@ import grpc
 import dodo_servicer_pb2 as dodo__servicer__pb2
 
 
-class ToDosStub(object):
+class DoDoStub(object):
     """Missing associated documentation comment in .proto file."""
 
     def __init__(self, channel):
@@ -15,23 +15,38 @@ class ToDosStub(object):
             channel: A grpc.Channel.
         """
         self.InsertToDo = channel.unary_unary(
-                '/grpc.ToDos/InsertToDo',
+                '/grpc.DoDo/InsertToDo',
                 request_serializer=dodo__servicer__pb2.ToDo.SerializeToString,
                 response_deserializer=dodo__servicer__pb2.SuccessResponse.FromString,
                 )
         self.UpdateToDo = channel.unary_unary(
-                '/grpc.ToDos/UpdateToDo',
+                '/grpc.DoDo/UpdateToDo',
                 request_serializer=dodo__servicer__pb2.ToDo.SerializeToString,
                 response_deserializer=dodo__servicer__pb2.SuccessResponse.FromString,
                 )
         self.DeleteToDo = channel.unary_unary(
-                '/grpc.ToDos/DeleteToDo',
+                '/grpc.DoDo/DeleteToDo',
                 request_serializer=dodo__servicer__pb2.ToDoIdentifier.SerializeToString,
+                response_deserializer=dodo__servicer__pb2.SuccessResponse.FromString,
+                )
+        self.InsertNote = channel.unary_unary(
+                '/grpc.DoDo/InsertNote',
+                request_serializer=dodo__servicer__pb2.Note.SerializeToString,
+                response_deserializer=dodo__servicer__pb2.SuccessResponse.FromString,
+                )
+        self.UpdateNote = channel.unary_unary(
+                '/grpc.DoDo/UpdateNote',
+                request_serializer=dodo__servicer__pb2.Note.SerializeToString,
+                response_deserializer=dodo__servicer__pb2.SuccessResponse.FromString,
+                )
+        self.DeleteNote = channel.unary_unary(
+                '/grpc.DoDo/DeleteNote',
+                request_serializer=dodo__servicer__pb2.NoteIdentifier.SerializeToString,
                 response_deserializer=dodo__servicer__pb2.SuccessResponse.FromString,
                 )
 
 
-class ToDosServicer(object):
+class DoDoServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def InsertToDo(self, request, context):
@@ -52,115 +67,6 @@ class ToDosServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-
-def add_ToDosServicer_to_server(servicer, server):
-    rpc_method_handlers = {
-            'InsertToDo': grpc.unary_unary_rpc_method_handler(
-                    servicer.InsertToDo,
-                    request_deserializer=dodo__servicer__pb2.ToDo.FromString,
-                    response_serializer=dodo__servicer__pb2.SuccessResponse.SerializeToString,
-            ),
-            'UpdateToDo': grpc.unary_unary_rpc_method_handler(
-                    servicer.UpdateToDo,
-                    request_deserializer=dodo__servicer__pb2.ToDo.FromString,
-                    response_serializer=dodo__servicer__pb2.SuccessResponse.SerializeToString,
-            ),
-            'DeleteToDo': grpc.unary_unary_rpc_method_handler(
-                    servicer.DeleteToDo,
-                    request_deserializer=dodo__servicer__pb2.ToDoIdentifier.FromString,
-                    response_serializer=dodo__servicer__pb2.SuccessResponse.SerializeToString,
-            ),
-    }
-    generic_handler = grpc.method_handlers_generic_handler(
-            'grpc.ToDos', rpc_method_handlers)
-    server.add_generic_rpc_handlers((generic_handler,))
-
-
- # This class is part of an EXPERIMENTAL API.
-class ToDos(object):
-    """Missing associated documentation comment in .proto file."""
-
-    @staticmethod
-    def InsertToDo(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/grpc.ToDos/InsertToDo',
-            dodo__servicer__pb2.ToDo.SerializeToString,
-            dodo__servicer__pb2.SuccessResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def UpdateToDo(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/grpc.ToDos/UpdateToDo',
-            dodo__servicer__pb2.ToDo.SerializeToString,
-            dodo__servicer__pb2.SuccessResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def DeleteToDo(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/grpc.ToDos/DeleteToDo',
-            dodo__servicer__pb2.ToDoIdentifier.SerializeToString,
-            dodo__servicer__pb2.SuccessResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-
-class NotesStub(object):
-    """Missing associated documentation comment in .proto file."""
-
-    def __init__(self, channel):
-        """Constructor.
-
-        Args:
-            channel: A grpc.Channel.
-        """
-        self.InsertNote = channel.unary_unary(
-                '/grpc.Notes/InsertNote',
-                request_serializer=dodo__servicer__pb2.Note.SerializeToString,
-                response_deserializer=dodo__servicer__pb2.SuccessResponse.FromString,
-                )
-        self.UpdateNote = channel.unary_unary(
-                '/grpc.Notes/UpdateNote',
-                request_serializer=dodo__servicer__pb2.Note.SerializeToString,
-                response_deserializer=dodo__servicer__pb2.SuccessResponse.FromString,
-                )
-        self.DeleteNote = channel.unary_unary(
-                '/grpc.Notes/DeleteNote',
-                request_serializer=dodo__servicer__pb2.NoteIdentifier.SerializeToString,
-                response_deserializer=dodo__servicer__pb2.SuccessResponse.FromString,
-                )
-
-
-class NotesServicer(object):
-    """Missing associated documentation comment in .proto file."""
-
     def InsertNote(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -180,8 +86,23 @@ class NotesServicer(object):
         raise NotImplementedError('Method not implemented!')
 
 
-def add_NotesServicer_to_server(servicer, server):
+def add_DoDoServicer_to_server(servicer, server):
     rpc_method_handlers = {
+            'InsertToDo': grpc.unary_unary_rpc_method_handler(
+                    servicer.InsertToDo,
+                    request_deserializer=dodo__servicer__pb2.ToDo.FromString,
+                    response_serializer=dodo__servicer__pb2.SuccessResponse.SerializeToString,
+            ),
+            'UpdateToDo': grpc.unary_unary_rpc_method_handler(
+                    servicer.UpdateToDo,
+                    request_deserializer=dodo__servicer__pb2.ToDo.FromString,
+                    response_serializer=dodo__servicer__pb2.SuccessResponse.SerializeToString,
+            ),
+            'DeleteToDo': grpc.unary_unary_rpc_method_handler(
+                    servicer.DeleteToDo,
+                    request_deserializer=dodo__servicer__pb2.ToDoIdentifier.FromString,
+                    response_serializer=dodo__servicer__pb2.SuccessResponse.SerializeToString,
+            ),
             'InsertNote': grpc.unary_unary_rpc_method_handler(
                     servicer.InsertNote,
                     request_deserializer=dodo__servicer__pb2.Note.FromString,
@@ -199,13 +120,64 @@ def add_NotesServicer_to_server(servicer, server):
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'grpc.Notes', rpc_method_handlers)
+            'grpc.DoDo', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
  # This class is part of an EXPERIMENTAL API.
-class Notes(object):
+class DoDo(object):
     """Missing associated documentation comment in .proto file."""
+
+    @staticmethod
+    def InsertToDo(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/grpc.DoDo/InsertToDo',
+            dodo__servicer__pb2.ToDo.SerializeToString,
+            dodo__servicer__pb2.SuccessResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def UpdateToDo(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/grpc.DoDo/UpdateToDo',
+            dodo__servicer__pb2.ToDo.SerializeToString,
+            dodo__servicer__pb2.SuccessResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def DeleteToDo(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/grpc.DoDo/DeleteToDo',
+            dodo__servicer__pb2.ToDoIdentifier.SerializeToString,
+            dodo__servicer__pb2.SuccessResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def InsertNote(request,
@@ -218,7 +190,7 @@ class Notes(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/grpc.Notes/InsertNote',
+        return grpc.experimental.unary_unary(request, target, '/grpc.DoDo/InsertNote',
             dodo__servicer__pb2.Note.SerializeToString,
             dodo__servicer__pb2.SuccessResponse.FromString,
             options, channel_credentials,
@@ -235,7 +207,7 @@ class Notes(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/grpc.Notes/UpdateNote',
+        return grpc.experimental.unary_unary(request, target, '/grpc.DoDo/UpdateNote',
             dodo__servicer__pb2.Note.SerializeToString,
             dodo__servicer__pb2.SuccessResponse.FromString,
             options, channel_credentials,
@@ -252,7 +224,7 @@ class Notes(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/grpc.Notes/DeleteNote',
+        return grpc.experimental.unary_unary(request, target, '/grpc.DoDo/DeleteNote',
             dodo__servicer__pb2.NoteIdentifier.SerializeToString,
             dodo__servicer__pb2.SuccessResponse.FromString,
             options, channel_credentials,
