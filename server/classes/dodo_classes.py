@@ -1,10 +1,13 @@
 import sys
 
+import sqlalchemy.orm
+
 sys.path.append("..")
 from requirements.secrets_file import connection_credentials
 import protobufs.dodo_servicer_pb2 as proto
 
 from sqlalchemy import *
+from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column
 
@@ -115,6 +118,67 @@ class NoteTagRel(Base):
     __tablename__ = "note_tag_rel"
     n_id = Column(Integer, ForeignKey("notes.n_id"), primary_key=True, nullable=False)
     ta_id = Column(Integer, ForeignKey("tags.ta_id"), primary_key=True, nullable=False)
+
+
+def convert_todo(proto_todo: proto.ToDo) -> ToDo:
+    dodo_todo = ToDo(
+        t_id=proto_todo.tid,
+        creator_id=proto_todo.creatorID,
+        text=proto_todo.text,
+        color=proto_todo.color,
+        is_done=proto_todo.isDOne
+    )
+    return dodo_todo
+
+
+def convert_note(proto_note: proto.Note) -> Note:
+    dodo_note = Note(
+        n_id=proto_note.nid,
+        creator_id=proto_note.creatorID,
+        title=proto_note.title,
+        content=proto_note.content,
+        color=proto_note.color,
+        is_visible=proto_note.isVisible,
+        is_highlighted=proto_note.isHighlighted,
+        creation_date=proto_note.creationDate  # ToDo: needs to be converted
+    )
+    return dodo_note
+
+
+def convert_profile(proto_profile: proto.Profile) -> Profile:
+    dodo_profile = Profile(
+        p_id=proto_profile.pid,
+        name=proto_profile.name,
+        creation_date=proto_profile.creationdDate  # ToDo: needs to be converted
+    )
+    return dodo_profile
+
+
+def convert_tag(proto_tag: proto.Tag) -> Tag:
+    dodo_tag = Tag(
+        ta_id=proto_tag.taid,
+        name=proto_tag.name
+    )
+    return dodo_tag
+
+
+def insert_db_object(dodo_object, db_engine):
+    Session = sessionmaker(bind=db_engine)
+    session = Session()
+    session.add(dodo_object)
+    session.commit()
+
+
+def update_db_object(db_engine):
+    pass
+
+
+def delete_db_object(object_id: int, object_type: type, db_engine):
+    Session = sessionmaker(bind=db_engine)
+    session = Session()
+    db_object = session.query(object_type).get(object_id)
+    session.delete(db_object)
+    session.commit()
 
 
 Base.metadata.create_all(engine)
