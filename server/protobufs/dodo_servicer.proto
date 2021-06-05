@@ -13,6 +13,16 @@ service DoDo {
     rpc InsertNote(Note) returns (SuccessResponse);
     rpc UpdateNote(Note) returns (SuccessResponse);
     rpc DeleteNote(NoteIdentifier) returns (SuccessResponse);
+
+
+    rpc InsertProfile(Profile) returns (SuccessResponse);
+    rpc DeleteProfile(Profile) returns (SuccessResponse);
+
+    rpc InsertTag(Tag) returns (SuccessResponse);
+    rpc DeleteTag(Tag) returns (SuccessResponse);
+
+    rpc InsertNoteTagRel(NoteTagRel) returns (SuccessResponse);
+    rpc DeleteNoteTagRel(NoteTagRel) returns (SuccessResponse);
 }
 
 message SuccessResponse {
@@ -57,6 +67,11 @@ message Profile {
 message Tag {
   uint32 taid = 1;
   string name = 2;
+}
+
+message NoteTagRel {
+  uint32 nid = 1;
+  uint32 taid = 2;
 }
 
 message Empty { }

@@ -162,6 +162,14 @@ def convert_tag(proto_tag: proto.Tag) -> Tag:
     return dodo_tag
 
 
+def convert_note_tag_rel(proto_note_tag_rel: proto.NoteTagRel) -> NoteTagRel:
+    dodo_note_tag_rel = NoteTagRel(
+        nid=proto_note_tag_rel.nid,
+        taid=proto_note_tag_rel.taid
+    )
+    return dodo_note_tag_rel
+
+
 def insert_db_object(dodo_object, db_engine):
     Session = sessionmaker(bind=db_engine)
     session = Session()

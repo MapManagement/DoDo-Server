@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x13\x64odo_servicer.proto\x12\x04grpc\x1a\x1fgoogle/protobuf/timestamp.proto\"\"\n\x0fSuccessResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\"S\n\x04ToDo\x12\x0b\n\x03tid\x18\x01 \x01(\r\x12\x11\n\tcreatorID\x18\x02 \x01(\r\x12\x0c\n\x04text\x18\x03 \x01(\t\x12\x0e\n\x06isDone\x18\x04 \x01(\x08\x12\r\n\x05\x63olor\x18\x06 \x01(\t\"0\n\x0eToDoIdentifier\x12\x0b\n\x03tid\x18\x01 \x01(\r\x12\x11\n\tcreatorID\x18\x02 \x01(\r\"\xb1\x01\n\x04Note\x12\x0b\n\x03nid\x18\x01 \x01(\r\x12\x11\n\tcreatorID\x18\x02 \x01(\r\x12\r\n\x05title\x18\x03 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x04 \x01(\t\x12\x11\n\tisVisible\x18\x05 \x01(\x08\x12\x15\n\risHighlighted\x18\x06 \x01(\x08\x12\r\n\x05\x63olor\x18\x07 \x01(\t\x12\x30\n\x0c\x63reationDate\x18\x08 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"0\n\x0eNoteIdentifier\x12\x0b\n\x03nid\x18\x01 \x01(\r\x12\x11\n\tcreatorID\x18\x02 \x01(\r\"V\n\x07Profile\x12\x0b\n\x03pid\x18\x01 \x01(\r\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x30\n\x0c\x63reationDate\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"!\n\x03Tag\x12\x0c\n\x04taid\x18\x01 \x01(\r\x12\x0c\n\x04name\x18\x02 \x01(\t\"\x07\n\x05\x45mpty2\xc0\x02\n\x04\x44oDo\x12/\n\nInsertToDo\x12\n.grpc.ToDo\x1a\x15.grpc.SuccessResponse\x12/\n\nUpdateToDo\x12\n.grpc.ToDo\x1a\x15.grpc.SuccessResponse\x12\x39\n\nDeleteToDo\x12\x14.grpc.ToDoIdentifier\x1a\x15.grpc.SuccessResponse\x12/\n\nInsertNote\x12\n.grpc.Note\x1a\x15.grpc.SuccessResponse\x12/\n\nUpdateNote\x12\n.grpc.Note\x1a\x15.grpc.SuccessResponse\x12\x39\n\nDeleteNote\x12\x14.grpc.NoteIdentifier\x1a\x15.grpc.SuccessResponseb\x06proto3'
+  serialized_pb=b'\n\x13\x64odo_servicer.proto\x12\x04grpc\x1a\x1fgoogle/protobuf/timestamp.proto\"\"\n\x0fSuccessResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\"S\n\x04ToDo\x12\x0b\n\x03tid\x18\x01 \x01(\r\x12\x11\n\tcreatorID\x18\x02 \x01(\r\x12\x0c\n\x04text\x18\x03 \x01(\t\x12\x0e\n\x06isDone\x18\x04 \x01(\x08\x12\r\n\x05\x63olor\x18\x06 \x01(\t\"0\n\x0eToDoIdentifier\x12\x0b\n\x03tid\x18\x01 \x01(\r\x12\x11\n\tcreatorID\x18\x02 \x01(\r\"\xb1\x01\n\x04Note\x12\x0b\n\x03nid\x18\x01 \x01(\r\x12\x11\n\tcreatorID\x18\x02 \x01(\r\x12\r\n\x05title\x18\x03 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x04 \x01(\t\x12\x11\n\tisVisible\x18\x05 \x01(\x08\x12\x15\n\risHighlighted\x18\x06 \x01(\x08\x12\r\n\x05\x63olor\x18\x07 \x01(\t\x12\x30\n\x0c\x63reationDate\x18\x08 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"0\n\x0eNoteIdentifier\x12\x0b\n\x03nid\x18\x01 \x01(\r\x12\x11\n\tcreatorID\x18\x02 \x01(\r\"V\n\x07Profile\x12\x0b\n\x03pid\x18\x01 \x01(\r\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x30\n\x0c\x63reationDate\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"!\n\x03Tag\x12\x0c\n\x04taid\x18\x01 \x01(\r\x12\x0c\n\x04name\x18\x02 \x01(\t\"\'\n\nNoteTagRel\x12\x0b\n\x03nid\x18\x01 \x01(\r\x12\x0c\n\x04taid\x18\x02 \x01(\r\"\x07\n\x05\x45mpty2\x86\x05\n\x04\x44oDo\x12/\n\nInsertToDo\x12\n.grpc.ToDo\x1a\x15.grpc.SuccessResponse\x12/\n\nUpdateToDo\x12\n.grpc.ToDo\x1a\x15.grpc.SuccessResponse\x12\x39\n\nDeleteToDo\x12\x14.grpc.ToDoIdentifier\x1a\x15.grpc.SuccessResponse\x12/\n\nInsertNote\x12\n.grpc.Note\x1a\x15.grpc.SuccessResponse\x12/\n\nUpdateNote\x12\n.grpc.Note\x1a\x15.grpc.SuccessResponse\x12\x39\n\nDeleteNote\x12\x14.grpc.NoteIdentifier\x1a\x15.grpc.SuccessResponse\x12\x35\n\rInsertProfile\x12\r.grpc.Profile\x1a\x15.grpc.SuccessResponse\x12\x35\n\rDeleteProfile\x12\r.grpc.Profile\x1a\x15.grpc.SuccessResponse\x12-\n\tInsertTag\x12\t.grpc.Tag\x1a\x15.grpc.SuccessResponse\x12-\n\tDeleteTag\x12\t.grpc.Tag\x1a\x15.grpc.SuccessResponse\x12;\n\x10InsertNoteTagRel\x12\x10.grpc.NoteTagRel\x1a\x15.grpc.SuccessResponse\x12;\n\x10\x44\x65leteNoteTagRel\x12\x10.grpc.NoteTagRel\x1a\x15.grpc.SuccessResponseb\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
 
@@ -363,6 +363,45 @@ _TAG = _descriptor.Descriptor(
 )
 
 
+_NOTETAGREL = _descriptor.Descriptor(
+  name='NoteTagRel',
+  full_name='grpc.NoteTagRel',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='nid', full_name='grpc.NoteTagRel.nid', index=0,
+      number=1, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='taid', full_name='grpc.NoteTagRel.taid', index=1,
+      number=2, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=586,
+  serialized_end=625,
+)
+
+
 _EMPTY = _descriptor.Descriptor(
   name='Empty',
   full_name='grpc.Empty',
@@ -383,8 +422,8 @@ _EMPTY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=586,
-  serialized_end=593,
+  serialized_start=627,
+  serialized_end=634,
 )
 
 _NOTE.fields_by_name['creationDate'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
@@ -396,6 +435,7 @@ DESCRIPTOR.message_types_by_name['Note'] = _NOTE
 DESCRIPTOR.message_types_by_name['NoteIdentifier'] = _NOTEIDENTIFIER
 DESCRIPTOR.message_types_by_name['Profile'] = _PROFILE
 DESCRIPTOR.message_types_by_name['Tag'] = _TAG
+DESCRIPTOR.message_types_by_name['NoteTagRel'] = _NOTETAGREL
 DESCRIPTOR.message_types_by_name['Empty'] = _EMPTY
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -448,6 +488,13 @@ Tag = _reflection.GeneratedProtocolMessageType('Tag', (_message.Message,), {
   })
 _sym_db.RegisterMessage(Tag)
 
+NoteTagRel = _reflection.GeneratedProtocolMessageType('NoteTagRel', (_message.Message,), {
+  'DESCRIPTOR' : _NOTETAGREL,
+  '__module__' : 'dodo_servicer_pb2'
+  # @@protoc_insertion_point(class_scope:grpc.NoteTagRel)
+  })
+_sym_db.RegisterMessage(NoteTagRel)
+
 Empty = _reflection.GeneratedProtocolMessageType('Empty', (_message.Message,), {
   'DESCRIPTOR' : _EMPTY,
   '__module__' : 'dodo_servicer_pb2'
@@ -464,8 +511,8 @@ _DODO = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=596,
-  serialized_end=916,
+  serialized_start=637,
+  serialized_end=1283,
   methods=[
   _descriptor.MethodDescriptor(
     name='InsertToDo',
@@ -523,6 +570,66 @@ _DODO = _descriptor.ServiceDescriptor(
     index=5,
     containing_service=None,
     input_type=_NOTEIDENTIFIER,
+    output_type=_SUCCESSRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='InsertProfile',
+    full_name='grpc.DoDo.InsertProfile',
+    index=6,
+    containing_service=None,
+    input_type=_PROFILE,
+    output_type=_SUCCESSRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='DeleteProfile',
+    full_name='grpc.DoDo.DeleteProfile',
+    index=7,
+    containing_service=None,
+    input_type=_PROFILE,
+    output_type=_SUCCESSRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='InsertTag',
+    full_name='grpc.DoDo.InsertTag',
+    index=8,
+    containing_service=None,
+    input_type=_TAG,
+    output_type=_SUCCESSRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='DeleteTag',
+    full_name='grpc.DoDo.DeleteTag',
+    index=9,
+    containing_service=None,
+    input_type=_TAG,
+    output_type=_SUCCESSRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='InsertNoteTagRel',
+    full_name='grpc.DoDo.InsertNoteTagRel',
+    index=10,
+    containing_service=None,
+    input_type=_NOTETAGREL,
+    output_type=_SUCCESSRESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='DeleteNoteTagRel',
+    full_name='grpc.DoDo.DeleteNoteTagRel',
+    index=11,
+    containing_service=None,
+    input_type=_NOTETAGREL,
     output_type=_SUCCESSRESPONSE,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,

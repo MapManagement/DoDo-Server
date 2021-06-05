@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-import protobufs.dodo_servicer_pb2 as dodo__servicer__pb2
+import dodo_servicer_pb2 as dodo__servicer__pb2
 
 
 class DoDoStub(object):
@@ -42,6 +42,36 @@ class DoDoStub(object):
         self.DeleteNote = channel.unary_unary(
                 '/grpc.DoDo/DeleteNote',
                 request_serializer=dodo__servicer__pb2.NoteIdentifier.SerializeToString,
+                response_deserializer=dodo__servicer__pb2.SuccessResponse.FromString,
+                )
+        self.InsertProfile = channel.unary_unary(
+                '/grpc.DoDo/InsertProfile',
+                request_serializer=dodo__servicer__pb2.Profile.SerializeToString,
+                response_deserializer=dodo__servicer__pb2.SuccessResponse.FromString,
+                )
+        self.DeleteProfile = channel.unary_unary(
+                '/grpc.DoDo/DeleteProfile',
+                request_serializer=dodo__servicer__pb2.Profile.SerializeToString,
+                response_deserializer=dodo__servicer__pb2.SuccessResponse.FromString,
+                )
+        self.InsertTag = channel.unary_unary(
+                '/grpc.DoDo/InsertTag',
+                request_serializer=dodo__servicer__pb2.Tag.SerializeToString,
+                response_deserializer=dodo__servicer__pb2.SuccessResponse.FromString,
+                )
+        self.DeleteTag = channel.unary_unary(
+                '/grpc.DoDo/DeleteTag',
+                request_serializer=dodo__servicer__pb2.Tag.SerializeToString,
+                response_deserializer=dodo__servicer__pb2.SuccessResponse.FromString,
+                )
+        self.InsertNoteTagRel = channel.unary_unary(
+                '/grpc.DoDo/InsertNoteTagRel',
+                request_serializer=dodo__servicer__pb2.NoteTagRel.SerializeToString,
+                response_deserializer=dodo__servicer__pb2.SuccessResponse.FromString,
+                )
+        self.DeleteNoteTagRel = channel.unary_unary(
+                '/grpc.DoDo/DeleteNoteTagRel',
+                request_serializer=dodo__servicer__pb2.NoteTagRel.SerializeToString,
                 response_deserializer=dodo__servicer__pb2.SuccessResponse.FromString,
                 )
 
@@ -85,6 +115,42 @@ class DoDoServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def InsertProfile(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def DeleteProfile(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def InsertTag(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def DeleteTag(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def InsertNoteTagRel(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def DeleteNoteTagRel(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_DoDoServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -116,6 +182,36 @@ def add_DoDoServicer_to_server(servicer, server):
             'DeleteNote': grpc.unary_unary_rpc_method_handler(
                     servicer.DeleteNote,
                     request_deserializer=dodo__servicer__pb2.NoteIdentifier.FromString,
+                    response_serializer=dodo__servicer__pb2.SuccessResponse.SerializeToString,
+            ),
+            'InsertProfile': grpc.unary_unary_rpc_method_handler(
+                    servicer.InsertProfile,
+                    request_deserializer=dodo__servicer__pb2.Profile.FromString,
+                    response_serializer=dodo__servicer__pb2.SuccessResponse.SerializeToString,
+            ),
+            'DeleteProfile': grpc.unary_unary_rpc_method_handler(
+                    servicer.DeleteProfile,
+                    request_deserializer=dodo__servicer__pb2.Profile.FromString,
+                    response_serializer=dodo__servicer__pb2.SuccessResponse.SerializeToString,
+            ),
+            'InsertTag': grpc.unary_unary_rpc_method_handler(
+                    servicer.InsertTag,
+                    request_deserializer=dodo__servicer__pb2.Tag.FromString,
+                    response_serializer=dodo__servicer__pb2.SuccessResponse.SerializeToString,
+            ),
+            'DeleteTag': grpc.unary_unary_rpc_method_handler(
+                    servicer.DeleteTag,
+                    request_deserializer=dodo__servicer__pb2.Tag.FromString,
+                    response_serializer=dodo__servicer__pb2.SuccessResponse.SerializeToString,
+            ),
+            'InsertNoteTagRel': grpc.unary_unary_rpc_method_handler(
+                    servicer.InsertNoteTagRel,
+                    request_deserializer=dodo__servicer__pb2.NoteTagRel.FromString,
+                    response_serializer=dodo__servicer__pb2.SuccessResponse.SerializeToString,
+            ),
+            'DeleteNoteTagRel': grpc.unary_unary_rpc_method_handler(
+                    servicer.DeleteNoteTagRel,
+                    request_deserializer=dodo__servicer__pb2.NoteTagRel.FromString,
                     response_serializer=dodo__servicer__pb2.SuccessResponse.SerializeToString,
             ),
     }
@@ -226,6 +322,108 @@ class DoDo(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/grpc.DoDo/DeleteNote',
             dodo__servicer__pb2.NoteIdentifier.SerializeToString,
+            dodo__servicer__pb2.SuccessResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def InsertProfile(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/grpc.DoDo/InsertProfile',
+            dodo__servicer__pb2.Profile.SerializeToString,
+            dodo__servicer__pb2.SuccessResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def DeleteProfile(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/grpc.DoDo/DeleteProfile',
+            dodo__servicer__pb2.Profile.SerializeToString,
+            dodo__servicer__pb2.SuccessResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def InsertTag(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/grpc.DoDo/InsertTag',
+            dodo__servicer__pb2.Tag.SerializeToString,
+            dodo__servicer__pb2.SuccessResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def DeleteTag(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/grpc.DoDo/DeleteTag',
+            dodo__servicer__pb2.Tag.SerializeToString,
+            dodo__servicer__pb2.SuccessResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def InsertNoteTagRel(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/grpc.DoDo/InsertNoteTagRel',
+            dodo__servicer__pb2.NoteTagRel.SerializeToString,
+            dodo__servicer__pb2.SuccessResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def DeleteNoteTagRel(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/grpc.DoDo/DeleteNoteTagRel',
+            dodo__servicer__pb2.NoteTagRel.SerializeToString,
             dodo__servicer__pb2.SuccessResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
