@@ -1,6 +1,5 @@
 syntax="proto3";
 
-import "google/protobuf/timestamp.proto";
 
 package grpc;
 
@@ -50,7 +49,7 @@ message Note {
     bool isVisible = 5;
     bool isHighlighted = 6;
     string color = 7;
-    google.protobuf.Timestamp creationDate = 8;
+    DateTime creationDate = 8;
 }
 
 message NoteIdentifier {
@@ -61,7 +60,7 @@ message NoteIdentifier {
 message Profile {
   uint32 pid = 1;
   string name = 2;
-  google.protobuf.Timestamp creationDate = 3;
+  DateTime creationDate = 3;
 }
 
 message Tag {
@@ -72,6 +71,15 @@ message Tag {
 message NoteTagRel {
   uint32 nid = 1;
   uint32 taid = 2;
+}
+
+message DateTime {
+  uint32 year = 1;
+  uint32 month = 2;
+  uint32 day = 3;
+  uint32 hour = 4;
+  uint32 minute = 5;
+  uint32 second = 6;
 }
 
 message Empty { }
