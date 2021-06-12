@@ -1,4 +1,4 @@
-from classes.dodo_classes import ToDo, Note, Profile, Tag, NoteTagRel
+from classes.dodo_classes import ToDo, Note, Profile, Tag, NoteTagRel, connection_error
 from classes import dodo_classes
 from google.protobuf.timestamp_pb2 import Timestamp
 from sqlalchemy import create_engine
@@ -21,16 +21,19 @@ class Server(rpc.DoDoServicer):
 
     # ToDOs
 
+    @connection_error
     def InsertToDo(self, request, context):
         logging.info("New ToDo is going to be inserted")
         todo = dodo_classes.convert_todo(request)
         dodo_classes.insert_db_object(todo, self.engine)
         # ToDo: adding return
 
+    @connection_error
     def UpdateToDo(self, request, context):
         logging.info("A ToDo is going to be updated")
         # ToDo: adding return
 
+    @connection_error
     def DeleteToDo(self, request, context):
         logging.info("A ToDo is going to be deleted")
         todo_id = request.tid
@@ -39,16 +42,19 @@ class Server(rpc.DoDoServicer):
 
     # Notes
 
+    @connection_error
     def InsertNote(self, request, context):
         logging.info("New Note is going to be inserted")
         note = dodo_classes.convert_note(request)
         dodo_classes.insert_db_object(note, self.engine)
         # ToDo: adding return
 
+    @connection_error
     def UpdateNote(self, request, context):
         logging.info("A Note is going to be updated")
         # ToDo: adding return
 
+    @connection_error
     def DeleteNote(self, request, context):
         logging.info("A Note is going to be deleted")
         note_id = request.nid
@@ -57,12 +63,14 @@ class Server(rpc.DoDoServicer):
 
     # Profiles
 
+    @connection_error
     def InsertProfile(self, request, context):
         logging.info("New Profile is going to be inserted")
         profile = dodo_classes.convert_profile(request)
         dodo_classes.insert_db_object(profile, self.engine)
         # ToDo: adding return
 
+    @connection_error
     def DeleteProfile(self, request, context):
         logging.info("A Profile is going to be deleted")
         profile_id = request.pid
@@ -71,12 +79,14 @@ class Server(rpc.DoDoServicer):
 
     # Tags
 
+    @connection_error
     def InsertTag(self, request, context):
         logging.info("New Tag is going to be inserted")
         tag = dodo_classes.convert_tag(request)
         dodo_classes.insert_db_object(tag, self.engine)
         # ToDo: adding return
 
+    @connection_error
     def DeleteTag(self, request, context):
         logging.info("A Tag is going to be deleted")
         tag_id = request.taid
@@ -85,12 +95,14 @@ class Server(rpc.DoDoServicer):
 
     # NoteTagRel
 
+    @connection_error
     def InsertNoteTagRel(self, request, context):
         logging.info("New NotTagRel is going to be inserted")
         note_tag_rel = dodo_classes.convert_note_tag_rel(request)
         dodo_classes.insert_db_object(note_tag_rel, self.engine)
         # ToDo: adding return
 
+    @connection_error
     def DeleteNoteTagRel(self, request, context):
         logging.info("A NoteTagRel is going to be deleted")
         # ToDo: primary consists of two columns -> new delete process needed

@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-import dodo_servicer_pb2 as dodo__servicer__pb2
+import protobufs.dodo_servicer_pb2 as dodo__servicer__pb2
 
 
 class DoDoStub(object):

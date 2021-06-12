@@ -1,5 +1,6 @@
 import datetime
 import sys
+import logging
 
 import sqlalchemy.orm
 
@@ -213,6 +214,18 @@ def proto_datetime_to_db(proto_date: proto.DateTime) -> DateTime:
         second=proto_date.second
     )
     return db_datetime
+
+
+def connection_error(function: func):
+    def wrapper(*args, **kwargs):
+        try:
+            function(*args, **kwargs)
+            return proto.SuccessResponse(success=True)
+        except Exception as ex:
+            logging.error(f"Something went wrong while connecting to the client:\n"
+                          f"{ex}")
+            return proto.SuccessResponse(success=False)
+    return wrapper
 
 
 def generate_tables():
