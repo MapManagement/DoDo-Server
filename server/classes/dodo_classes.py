@@ -1,3 +1,4 @@
+import datetime
 import sys
 
 import sqlalchemy.orm
@@ -71,7 +72,7 @@ class Note(Base):
             isVisible=self.is_visible,
             isHighlighted=self.is_highlighted,
             color=self.color,
-            creationDate=self.creation_date  # ToDo: needs to be converted to google type
+            creationDate=db_datetime_to_proto(self.creation_date)
         )
         return proto_note
 
@@ -92,7 +93,7 @@ class Profile(Base):
         proto_profile = proto.Profile(
             pid=self.p_id,
             name=self.name,
-            creationDate=self.creation_date  # ToDo: needs to be converted to google type
+            creationDate=db_datetime_to_proto(self.creation_date)
         )
         return proto_profile
 
@@ -140,7 +141,7 @@ def convert_note(proto_note: proto.Note) -> Note:
         color=proto_note.color,
         is_visible=proto_note.isVisible,
         is_highlighted=proto_note.isHighlighted,
-        creation_date=proto_note.creationDate  # ToDo: needs to be converted
+        creation_date=proto_datetime_to_db(proto_note.creationDate)
     )
     return dodo_note
 
@@ -149,7 +150,7 @@ def convert_profile(proto_profile: proto.Profile) -> Profile:
     dodo_profile = Profile(
         p_id=proto_profile.pid,
         name=proto_profile.name,
-        creation_date=proto_profile.creationdDate  # ToDo: needs to be converted
+        creation_date=proto_datetime_to_db(proto_profile.creationdDate)
     )
     return dodo_profile
 
@@ -189,4 +190,30 @@ def delete_db_object(object_id: int, object_type: type, db_engine):
     session.commit()
 
 
-Base.metadata.create_all(engine)
+def db_datetime_to_proto(db_datetime: DateTime) -> proto.DateTime:
+    python_datetime = db_datetime.python_type
+    proto_datetime = proto.DateTime(
+        year=python_datetime.year,
+        month=python_datetime.month,
+        day=python_datetime.day,
+        hour=python_datetime.hour,
+        minute=python_datetime.minute,
+        second=python_datetime.second
+    )
+    return proto_datetime
+
+
+def proto_datetime_to_db(proto_date: proto.DateTime) -> DateTime:
+    db_datetime = datetime.datetime(
+        year=proto_date.year,
+        month=proto_date.month,
+        day=proto_date.day,
+        hour=proto_date.hour,
+        minute=proto_date.minute,
+        second=proto_date.second
+    )
+    return db_datetime
+
+
+def generate_tables():
+    Base.metadata.create_all(engine)

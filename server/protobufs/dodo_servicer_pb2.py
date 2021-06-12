@@ -11,7 +11,6 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
-from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -20,9 +19,8 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x13\x64odo_servicer.proto\x12\x04grpc\x1a\x1fgoogle/protobuf/timestamp.proto\"\"\n\x0fSuccessResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\"S\n\x04ToDo\x12\x0b\n\x03tid\x18\x01 \x01(\r\x12\x11\n\tcreatorID\x18\x02 \x01(\r\x12\x0c\n\x04text\x18\x03 \x01(\t\x12\x0e\n\x06isDone\x18\x04 \x01(\x08\x12\r\n\x05\x63olor\x18\x06 \x01(\t\"0\n\x0eToDoIdentifier\x12\x0b\n\x03tid\x18\x01 \x01(\r\x12\x11\n\tcreatorID\x18\x02 \x01(\r\"\xb1\x01\n\x04Note\x12\x0b\n\x03nid\x18\x01 \x01(\r\x12\x11\n\tcreatorID\x18\x02 \x01(\r\x12\r\n\x05title\x18\x03 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x04 \x01(\t\x12\x11\n\tisVisible\x18\x05 \x01(\x08\x12\x15\n\risHighlighted\x18\x06 \x01(\x08\x12\r\n\x05\x63olor\x18\x07 \x01(\t\x12\x30\n\x0c\x63reationDate\x18\x08 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"0\n\x0eNoteIdentifier\x12\x0b\n\x03nid\x18\x01 \x01(\r\x12\x11\n\tcreatorID\x18\x02 \x01(\r\"V\n\x07Profile\x12\x0b\n\x03pid\x18\x01 \x01(\r\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x30\n\x0c\x63reationDate\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"!\n\x03Tag\x12\x0c\n\x04taid\x18\x01 \x01(\r\x12\x0c\n\x04name\x18\x02 \x01(\t\"\'\n\nNoteTagRel\x12\x0b\n\x03nid\x18\x01 \x01(\r\x12\x0c\n\x04taid\x18\x02 \x01(\r\"\x07\n\x05\x45mpty2\x86\x05\n\x04\x44oDo\x12/\n\nInsertToDo\x12\n.grpc.ToDo\x1a\x15.grpc.SuccessResponse\x12/\n\nUpdateToDo\x12\n.grpc.ToDo\x1a\x15.grpc.SuccessResponse\x12\x39\n\nDeleteToDo\x12\x14.grpc.ToDoIdentifier\x1a\x15.grpc.SuccessResponse\x12/\n\nInsertNote\x12\n.grpc.Note\x1a\x15.grpc.SuccessResponse\x12/\n\nUpdateNote\x12\n.grpc.Note\x1a\x15.grpc.SuccessResponse\x12\x39\n\nDeleteNote\x12\x14.grpc.NoteIdentifier\x1a\x15.grpc.SuccessResponse\x12\x35\n\rInsertProfile\x12\r.grpc.Profile\x1a\x15.grpc.SuccessResponse\x12\x35\n\rDeleteProfile\x12\r.grpc.Profile\x1a\x15.grpc.SuccessResponse\x12-\n\tInsertTag\x12\t.grpc.Tag\x1a\x15.grpc.SuccessResponse\x12-\n\tDeleteTag\x12\t.grpc.Tag\x1a\x15.grpc.SuccessResponse\x12;\n\x10InsertNoteTagRel\x12\x10.grpc.NoteTagRel\x1a\x15.grpc.SuccessResponse\x12;\n\x10\x44\x65leteNoteTagRel\x12\x10.grpc.NoteTagRel\x1a\x15.grpc.SuccessResponseb\x06proto3'
-  ,
-  dependencies=[google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
+  serialized_pb=b'\n\x13\x64odo_servicer.proto\x12\x04grpc\"\"\n\x0fSuccessResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\"S\n\x04ToDo\x12\x0b\n\x03tid\x18\x01 \x01(\r\x12\x11\n\tcreatorID\x18\x02 \x01(\r\x12\x0c\n\x04text\x18\x03 \x01(\t\x12\x0e\n\x06isDone\x18\x04 \x01(\x08\x12\r\n\x05\x63olor\x18\x06 \x01(\t\"0\n\x0eToDoIdentifier\x12\x0b\n\x03tid\x18\x01 \x01(\r\x12\x11\n\tcreatorID\x18\x02 \x01(\r\"\xa5\x01\n\x04Note\x12\x0b\n\x03nid\x18\x01 \x01(\r\x12\x11\n\tcreatorID\x18\x02 \x01(\r\x12\r\n\x05title\x18\x03 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x04 \x01(\t\x12\x11\n\tisVisible\x18\x05 \x01(\x08\x12\x15\n\risHighlighted\x18\x06 \x01(\x08\x12\r\n\x05\x63olor\x18\x07 \x01(\t\x12$\n\x0c\x63reationDate\x18\x08 \x01(\x0b\x32\x0e.grpc.DateTime\"0\n\x0eNoteIdentifier\x12\x0b\n\x03nid\x18\x01 \x01(\r\x12\x11\n\tcreatorID\x18\x02 \x01(\r\"J\n\x07Profile\x12\x0b\n\x03pid\x18\x01 \x01(\r\x12\x0c\n\x04name\x18\x02 \x01(\t\x12$\n\x0c\x63reationDate\x18\x03 \x01(\x0b\x32\x0e.grpc.DateTime\"!\n\x03Tag\x12\x0c\n\x04taid\x18\x01 \x01(\r\x12\x0c\n\x04name\x18\x02 \x01(\t\"\'\n\nNoteTagRel\x12\x0b\n\x03nid\x18\x01 \x01(\r\x12\x0c\n\x04taid\x18\x02 \x01(\r\"b\n\x08\x44\x61teTime\x12\x0c\n\x04year\x18\x01 \x01(\r\x12\r\n\x05month\x18\x02 \x01(\r\x12\x0b\n\x03\x64\x61y\x18\x03 \x01(\r\x12\x0c\n\x04hour\x18\x04 \x01(\r\x12\x0e\n\x06minute\x18\x05 \x01(\r\x12\x0e\n\x06second\x18\x06 \x01(\r\"\x07\n\x05\x45mpty2\x86\x05\n\x04\x44oDo\x12/\n\nInsertToDo\x12\n.grpc.ToDo\x1a\x15.grpc.SuccessResponse\x12/\n\nUpdateToDo\x12\n.grpc.ToDo\x1a\x15.grpc.SuccessResponse\x12\x39\n\nDeleteToDo\x12\x14.grpc.ToDoIdentifier\x1a\x15.grpc.SuccessResponse\x12/\n\nInsertNote\x12\n.grpc.Note\x1a\x15.grpc.SuccessResponse\x12/\n\nUpdateNote\x12\n.grpc.Note\x1a\x15.grpc.SuccessResponse\x12\x39\n\nDeleteNote\x12\x14.grpc.NoteIdentifier\x1a\x15.grpc.SuccessResponse\x12\x35\n\rInsertProfile\x12\r.grpc.Profile\x1a\x15.grpc.SuccessResponse\x12\x35\n\rDeleteProfile\x12\r.grpc.Profile\x1a\x15.grpc.SuccessResponse\x12-\n\tInsertTag\x12\t.grpc.Tag\x1a\x15.grpc.SuccessResponse\x12-\n\tDeleteTag\x12\t.grpc.Tag\x1a\x15.grpc.SuccessResponse\x12;\n\x10InsertNoteTagRel\x12\x10.grpc.NoteTagRel\x1a\x15.grpc.SuccessResponse\x12;\n\x10\x44\x65leteNoteTagRel\x12\x10.grpc.NoteTagRel\x1a\x15.grpc.SuccessResponseb\x06proto3'
+)
 
 
 
@@ -54,8 +52,8 @@ _SUCCESSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=62,
-  serialized_end=96,
+  serialized_start=29,
+  serialized_end=63,
 )
 
 
@@ -114,8 +112,8 @@ _TODO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=98,
-  serialized_end=181,
+  serialized_start=65,
+  serialized_end=148,
 )
 
 
@@ -153,8 +151,8 @@ _TODOIDENTIFIER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=183,
-  serialized_end=231,
+  serialized_start=150,
+  serialized_end=198,
 )
 
 
@@ -234,8 +232,8 @@ _NOTE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=234,
-  serialized_end=411,
+  serialized_start=201,
+  serialized_end=366,
 )
 
 
@@ -273,8 +271,8 @@ _NOTEIDENTIFIER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=413,
-  serialized_end=461,
+  serialized_start=368,
+  serialized_end=416,
 )
 
 
@@ -319,8 +317,8 @@ _PROFILE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=463,
-  serialized_end=549,
+  serialized_start=418,
+  serialized_end=492,
 )
 
 
@@ -358,8 +356,8 @@ _TAG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=551,
-  serialized_end=584,
+  serialized_start=494,
+  serialized_end=527,
 )
 
 
@@ -397,8 +395,75 @@ _NOTETAGREL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=586,
-  serialized_end=625,
+  serialized_start=529,
+  serialized_end=568,
+)
+
+
+_DATETIME = _descriptor.Descriptor(
+  name='DateTime',
+  full_name='grpc.DateTime',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='year', full_name='grpc.DateTime.year', index=0,
+      number=1, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='month', full_name='grpc.DateTime.month', index=1,
+      number=2, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='day', full_name='grpc.DateTime.day', index=2,
+      number=3, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='hour', full_name='grpc.DateTime.hour', index=3,
+      number=4, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='minute', full_name='grpc.DateTime.minute', index=4,
+      number=5, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='second', full_name='grpc.DateTime.second', index=5,
+      number=6, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=570,
+  serialized_end=668,
 )
 
 
@@ -422,12 +487,12 @@ _EMPTY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=627,
-  serialized_end=634,
+  serialized_start=670,
+  serialized_end=677,
 )
 
-_NOTE.fields_by_name['creationDate'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
-_PROFILE.fields_by_name['creationDate'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
+_NOTE.fields_by_name['creationDate'].message_type = _DATETIME
+_PROFILE.fields_by_name['creationDate'].message_type = _DATETIME
 DESCRIPTOR.message_types_by_name['SuccessResponse'] = _SUCCESSRESPONSE
 DESCRIPTOR.message_types_by_name['ToDo'] = _TODO
 DESCRIPTOR.message_types_by_name['ToDoIdentifier'] = _TODOIDENTIFIER
@@ -436,6 +501,7 @@ DESCRIPTOR.message_types_by_name['NoteIdentifier'] = _NOTEIDENTIFIER
 DESCRIPTOR.message_types_by_name['Profile'] = _PROFILE
 DESCRIPTOR.message_types_by_name['Tag'] = _TAG
 DESCRIPTOR.message_types_by_name['NoteTagRel'] = _NOTETAGREL
+DESCRIPTOR.message_types_by_name['DateTime'] = _DATETIME
 DESCRIPTOR.message_types_by_name['Empty'] = _EMPTY
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -495,6 +561,13 @@ NoteTagRel = _reflection.GeneratedProtocolMessageType('NoteTagRel', (_message.Me
   })
 _sym_db.RegisterMessage(NoteTagRel)
 
+DateTime = _reflection.GeneratedProtocolMessageType('DateTime', (_message.Message,), {
+  'DESCRIPTOR' : _DATETIME,
+  '__module__' : 'dodo_servicer_pb2'
+  # @@protoc_insertion_point(class_scope:grpc.DateTime)
+  })
+_sym_db.RegisterMessage(DateTime)
+
 Empty = _reflection.GeneratedProtocolMessageType('Empty', (_message.Message,), {
   'DESCRIPTOR' : _EMPTY,
   '__module__' : 'dodo_servicer_pb2'
@@ -511,8 +584,8 @@ _DODO = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=637,
-  serialized_end=1283,
+  serialized_start=680,
+  serialized_end=1326,
   methods=[
   _descriptor.MethodDescriptor(
     name='InsertToDo',
