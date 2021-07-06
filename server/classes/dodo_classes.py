@@ -13,7 +13,6 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column
 
-engine = create_engine(connection_credentials)
 Base = declarative_base()
 
 
@@ -172,25 +171,6 @@ def convert_note_tag_rel(proto_note_tag_rel: proto.NoteTagRel) -> NoteTagRel:
     return dodo_note_tag_rel
 
 
-def insert_db_object(dodo_object, db_engine):
-    Session = sessionmaker(bind=db_engine)
-    session = Session()
-    session.add(dodo_object)
-    session.commit()
-
-
-def update_db_object(db_engine):
-    pass
-
-
-def delete_db_object(object_id: int, object_type: type, db_engine):
-    Session = sessionmaker(bind=db_engine)
-    session = Session()
-    db_object = session.query(object_type).get(object_id)
-    session.delete(db_object)
-    session.commit()
-
-
 def db_datetime_to_proto(db_datetime: DateTime) -> proto.DateTime:
     python_datetime = db_datetime.python_type
     proto_datetime = proto.DateTime(
@@ -214,6 +194,33 @@ def proto_datetime_to_db(proto_date: proto.DateTime) -> DateTime:
         second=proto_date.second
     )
     return db_datetime
+
+
+class DbManager:
+
+    def __init__(self):
+        self.engine = create_engine(connection_credentials)
+
+        Session = sessionmaker(bind=self.engine)
+        self.session = Session()
+
+    def insert_db_object(self, dodo_object):
+        self.session.add(dodo_object)
+        self.session.commit()
+    
+    def update_db_object(self):
+        pass  # ToDo: updating database object
+
+    def delete_db_object(self, db_object):
+        self.session.delete(db_object)
+        self.session.commit()
+
+    def query_db_object(self, object_ids: list, field_names: list, object_type: type):
+        conditions = {}
+        for (object_id, field_name) in (object_ids, field_names):
+            conditions.update({field_name: object_id})
+        db_object = self.session.query(object_type).get(conditions)  # ToDo: needs to be tested
+        return db_object
 
 
 def connection_error(function: func):
