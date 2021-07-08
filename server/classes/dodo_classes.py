@@ -207,9 +207,6 @@ class DbManager:
     def insert_db_object(self, dodo_object):
         self.session.add(dodo_object)
         self.session.commit()
-    
-    def update_db_object(self):
-        pass  # ToDo: updating database object
 
     def delete_db_object(self, db_object):
         self.session.delete(db_object)

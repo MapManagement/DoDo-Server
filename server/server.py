@@ -20,79 +20,78 @@ class Server(rpc.DoDoServicer):
         self.engine = create_engine(connection_credentials)
         self.db_manager = DbManager()
 
-    # ToDOs
+    # ToDOs --------------------------------------------------------------
 
     @connection_error
     def InsertToDo(self, request, context):
         logging.info("New ToDo is going to be inserted")
         todo = dodo_classes.convert_todo(request)
         self.db_manager.insert_db_object(todo)
-        # ToDo: adding return
 
     @connection_error
     def UpdateToDo(self, request, context):
         logging.info("A ToDo is going to be updated")
         todo_id = request.tid
-        todo = self.db_manager.query_db_object([todo_id], ["t_id"], ToDo)
-        # ToDo: adding return
+        db_todo = self.db_manager.query_db_object([todo_id], ["t_id"], ToDo)
+        db_todo.text = request.text
+        db_todo.is_done = request.isDone
+        db_todo.color = request.color
 
     @connection_error
     def DeleteToDo(self, request, context):
         logging.info("A ToDo is going to be deleted")
         todo_id = request.tid
-        todo = self.db_manager.query_db_object([todo_id], ["t_id"], ToDo)
-        self.db_manager.delete_db_object(todo)
-        # ToDo: adding return
+        db_todo = self.db_manager.query_db_object([todo_id], ["t_id"], ToDo)
+        self.db_manager.delete_db_object(db_todo)
 
-    # Notes
+    # Notes --------------------------------------------------------------
 
     @connection_error
     def InsertNote(self, request, context):
         logging.info("New Note is going to be inserted")
         note = dodo_classes.convert_note(request)
         self.db_manager.insert_db_object(note)
-        # ToDo: adding return
 
     @connection_error
     def UpdateNote(self, request, context):
         logging.info("A Note is going to be updated")
         note_id = request.nid
-        note = self.db_manager.query_db_object([note_id], ["n_id"], Note)
-        # ToDo: adding return
+        db_note = self.db_manager.query_db_object([note_id], ["n_id"], Note)
+        db_note.title = request.title
+        db_note.content = request.content
+        db_note.is_visible = request.isVisible
+        db_note.is_highlighted = request.isHighlighted
+        db_note.color = request.color
 
     @connection_error
     def DeleteNote(self, request, context):
         logging.info("A Note is going to be deleted")
         note_id = request.nid
-        note = self.db_manager.query_db_object([note_id], ["n_id"], Note)
-        self.db_manager.delete_db_object(note)
-        # ToDo: adding return
+        db_note = self.db_manager.query_db_object([note_id], ["n_id"], Note)
+        self.db_manager.delete_db_object(db_note)
 
-    # Profiles
+    # Profiles --------------------------------------------------------------
 
     @connection_error
     def InsertProfile(self, request, context):
         logging.info("New Profile is going to be inserted")
         profile = dodo_classes.convert_profile(request)
         self.db_manager.insert_db_object(profile)
-        # ToDo: adding return
 
     @connection_error
     def DeleteProfile(self, request, context):
         logging.info("A Profile is going to be deleted")
         profile_id = request.pid
-        profile = self.db_manager.query_db_object([profile_id], ["p_id"], Profile)
-        self.db_manager.delete_db_object(profile)
-        # ToDo: adding return
+        db_profile = self.db_manager.query_db_object([profile_id], ["p_id"], Profile)
+        self.db_manager.delete_db_object(db_profile)
 
-    # Tags
+    # Tags --------------------------------------------------------------
 
     @connection_error
     def InsertTag(self, request, context):
         logging.info("New Tag is going to be inserted")
         tag = dodo_classes.convert_tag(request)
         self.db_manager.insert_db_object(tag)
-        # ToDo: adding return
 
     @connection_error
     def DeleteTag(self, request, context):
@@ -100,16 +99,14 @@ class Server(rpc.DoDoServicer):
         tag_id = request.taid
         tag = self.db_manager.query_db_object([tag_id], ["ta_id"], Tag)
         self.db_manager.delete_db_object(tag)
-        # ToDo: adding return
 
-    # NoteTagRel
+    # NoteTagRel --------------------------------------------------------------
 
     @connection_error
     def InsertNoteTagRel(self, request, context):
         logging.info("New NotTagRel is going to be inserted")
         note_tag_rel = dodo_classes.convert_note_tag_rel(request)
         self.db_manager.insert_db_object(note_tag_rel)
-        # ToDo: adding return
 
     @connection_error
     def DeleteNoteTagRel(self, request, context):
@@ -117,7 +114,6 @@ class Server(rpc.DoDoServicer):
         note_tag_rel_ids = [request.nid, request.tid]
         note_tag_rel = self.db_manager.query_db_object(note_tag_rel_ids, ["n_id", "t_id"], NoteTagRel)
         self.db_manager.delete_db_object(note_tag_rel)
-        # ToDo: adding return
 
 
 if __name__ == "__main__":
