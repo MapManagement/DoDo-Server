@@ -1,16 +1,26 @@
-from classes.dodo_classes import ToDo, Note, Profile, Tag, NoteTagRel, connection_error, DbManager
+from classes.dodo_classes import ToDo, Note, Profile, Tag, NoteTagRel
+from classes.database import DbManager
 from classes import dodo_classes
-from google.protobuf.timestamp_pb2 import Timestamp
 from sqlalchemy import create_engine
 from requirements.secrets_file import connection_credentials
 from concurrent import futures
 
+import protobufs.dodo_servicer_pb2 as proto
 import grpc
-import time
 import logging
-
 import protobufs.dodo_servicer_pb2_grpc as rpc
-import protobufs.dodo_servicer_pb2 as dodo
+
+
+def connection_error(function):
+    def wrapper(*args, **kwargs):
+        try:
+            function(*args, **kwargs)
+            return proto.SuccessResponse(success=True)
+        except Exception as ex:
+            logging.error(f"Something went wrong while connecting to the client:\n"
+                          f"{ex}")
+            return proto.SuccessResponse(success=False)
+    return wrapper
 
 
 class Server(rpc.DoDoServicer):
