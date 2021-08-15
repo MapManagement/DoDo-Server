@@ -35,7 +35,7 @@ class Server(rpc.DoDoServicer):
     @connection_error
     def InsertToDo(self, request, context):
         logging.info("New ToDo is going to be inserted")
-        todo = dodo_classes.convert_todo(request)
+        todo = dodo_classes.convert_todo(request)  # ToDo: missing func
         self.db_manager.insert_db_object(todo)
 
     @connection_error
@@ -59,7 +59,7 @@ class Server(rpc.DoDoServicer):
     @connection_error
     def InsertNote(self, request, context):
         logging.info("New Note is going to be inserted")
-        note = dodo_classes.convert_note(request)
+        note = dodo_classes.convert_note(request)  # ToDo: missing func
         self.db_manager.insert_db_object(note)
 
     @connection_error
@@ -85,7 +85,7 @@ class Server(rpc.DoDoServicer):
     @connection_error
     def InsertProfile(self, request, context):
         logging.info("New Profile is going to be inserted")
-        profile = dodo_classes.convert_profile(request)
+        profile = dodo_classes.convert_profile(request)  # ToDo: missing func
         self.db_manager.insert_db_object(profile)
 
     @connection_error
@@ -100,7 +100,7 @@ class Server(rpc.DoDoServicer):
     @connection_error
     def InsertTag(self, request, context):
         logging.info("New Tag is going to be inserted")
-        tag = dodo_classes.convert_tag(request)
+        tag = dodo_classes.convert_tag(request)  # ToDo: missing func
         self.db_manager.insert_db_object(tag)
 
     @connection_error
@@ -115,7 +115,7 @@ class Server(rpc.DoDoServicer):
     @connection_error
     def InsertNoteTagRel(self, request, context):
         logging.info("New NotTagRel is going to be inserted")
-        note_tag_rel = dodo_classes.convert_note_tag_rel(request)
+        note_tag_rel = dodo_classes.convert_note_tag_rel(request)  # ToDo: missing func
         self.db_manager.insert_db_object(note_tag_rel)
 
     @connection_error

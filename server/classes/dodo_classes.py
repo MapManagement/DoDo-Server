@@ -70,7 +70,7 @@ class Note(Base):
             isVisible=self.is_visible,
             isHighlighted=self.is_highlighted,
             color=self.color,
-            creationDate=DbConverter.db_datetime_to_proto(self.creation_date)
+            creationDate=str(self.creation_date)
         )
         return proto_note
 
@@ -91,7 +91,7 @@ class Profile(Base):
         proto_profile = proto.Profile(
             pid=self.p_id,
             name=self.name,
-            creationDate=DbConverter.db_datetime_to_proto(self.creation_date)
+            creationDate=str(self.creation_date)
         )
         return proto_profile
 

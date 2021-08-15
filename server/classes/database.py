@@ -54,7 +54,7 @@ class DbConverter:
             color=proto_note.color,
             is_visible=proto_note.isVisible,
             is_highlighted=proto_note.isHighlighted,
-            creation_date=DbConverter.proto_datetime_to_db(proto_note.creationDate)
+            creation_date=str(proto_note.creationDate)
         )
         return dodo_note
 
@@ -63,7 +63,7 @@ class DbConverter:
         dodo_profile = Profile(
             p_id=proto_profile.pid,
             name=proto_profile.name,
-            creation_date=DbConverter.proto_datetime_to_db(proto_profile.creationdDate)
+            creation_date=str(proto_profile.creationdDate)
         )
         return dodo_profile
 
@@ -83,27 +83,3 @@ class DbConverter:
         )
         return dodo_note_tag_rel
 
-    @staticmethod
-    def db_datetime_to_proto(db_datetime: DateTime) -> proto.DateTime:
-        python_datetime = db_datetime.python_type
-        proto_datetime = proto.DateTime(
-            year=python_datetime.year,
-            month=python_datetime.month,
-            day=python_datetime.day,
-            hour=python_datetime.hour,
-            minute=python_datetime.minute,
-            second=python_datetime.second
-        )
-        return proto_datetime
-
-    @staticmethod
-    def proto_datetime_to_db(proto_date: proto.DateTime) -> DateTime:
-        db_datetime = datetime.datetime(
-            year=proto_date.year,
-            month=proto_date.month,
-            day=proto_date.day,
-            hour=proto_date.hour,
-            minute=proto_date.minute,
-            second=proto_date.second
-        )
-        return db_datetime
